@@ -24,7 +24,7 @@ class Hooks {
     private val caps = DesiredCapabilities()
 
     @Before
-    fun setUp() {
+    fun beforeEachScenario() {
         caps.setCapability("platformName", platformName)
         caps.setCapability("automationName", automationName)
         caps.setCapability("appPackage", appPackage)
@@ -35,7 +35,7 @@ class Hooks {
     }
 
     @AfterStep
-    fun afterScenario(scenario: Scenario) {
+    fun afterEachStep(scenario: Scenario) {
         if (scenario.isFailed) {
             val screenshot = (driver as TakesScreenshot).getScreenshotAs(OutputType.BYTES)
             scenario.attach(
@@ -55,7 +55,7 @@ class Hooks {
     }
 
     @After
-    fun tearDown() {
+    fun afterEachScenario() {
         driver.quit()
     }
 }
