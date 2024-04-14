@@ -4,8 +4,7 @@ import io.appium.java_client.android.AndroidDriver
 import io.cucumber.java.en.*
 import pages.CalculatorPage
 
-
-class CalculatorSteps(private val driver: AndroidDriver = Hooks.driver) {
+class CalculatorSteps(private val driver: AndroidDriver = Hooks.driver) : BaseSteps() {
     @When("I multiply {int} and {int}")
     fun i_multiply_and(int1: Int, int2: Int) {
         val calculatorPage = CalculatorPage(driver)
