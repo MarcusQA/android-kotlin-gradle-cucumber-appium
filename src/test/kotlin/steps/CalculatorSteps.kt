@@ -1,7 +1,8 @@
 package steps
 
 import io.appium.java_client.android.AndroidDriver
-import io.cucumber.java.en.*
+import io.cucumber.java.en.Then
+import io.cucumber.java.en.When
 import pages.CalculatorPage
 
 class CalculatorSteps(private val driver: AndroidDriver = Hooks.getDriver()) : BaseSteps() {
