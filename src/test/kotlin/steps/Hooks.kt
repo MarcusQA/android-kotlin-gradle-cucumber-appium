@@ -1,19 +1,19 @@
 package steps
 
 import io.appium.java_client.android.AndroidDriver
-import io.cucumber.java.After
-import io.cucumber.java.AfterStep
-import io.cucumber.java.Before
-import io.cucumber.java.Scenario
-import org.openqa.selenium.OutputType
-import org.openqa.selenium.TakesScreenshot
+import io.cucumber.java.*
+import org.openqa.selenium.*
 import org.openqa.selenium.remote.DesiredCapabilities
 import java.net.URL
 import java.time.Duration.ofSeconds
 
 class Hooks {
     companion object {
-        lateinit var driver: AndroidDriver
+        private lateinit var driver: AndroidDriver
+
+        fun getDriver(): AndroidDriver {
+            return this.driver
+        }
     }
 
     private val activityName = "com.sec.android.app.popupcalculator.Calculator"
@@ -31,7 +31,7 @@ class Hooks {
         caps.setCapability("appActivity", activityName)
 
         driver = AndroidDriver(URL(serverUrl), caps)
-        driver.manage().timeouts().implicitlyWait(ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(ofSeconds(10))
     }
 
     @AfterStep
